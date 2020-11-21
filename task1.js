@@ -1,27 +1,17 @@
-// for ([инициализация]; [условие]; [финальное выражение])выражение
-
-//Чтобы воспроизвести такую функцию, можно сделать три параметра, и все как в цикле for.стартовое условие, условие сравнения, ну и смена переменные.Еще нужен четвертый параметр, колбек, в который мы передаем индекс.Допустим колбек обращается к какому - то массиву по индексу который получает у себя в параметрах.Тут нужна рекурсия и пока значение i соответствует условию то рекурсивный вызов продолжается.Но при каждом вызове в параметр переменной передавать вызов функции которая счетчик двигает
-
 function callback(){
 	console.log('123');
 }
 
-function forFunc(i, condition, step) {
-	this.i = i;
-	if (condition) {
-		return true;
-		//i_ = i_ + step;
+function forFunc(i, limit, step, iteration) {
+
+	if (limit/step - iteration >= i) {
+		callback();
 	}
 	else {
 		callback();
-		i=step;
-		return forFunc(i, condition, step);
+		iteration = iteration - step;
+		return forFunc(i, limit, step, iteration);
 	}
 }
 
-forFunc(1, i<3, i+1);
-
-
-
-// var calculator = item => new Function('a1, b1, a2, b2', 'return ' + item.value + ';');
-// var calculator = new Function('a1, b1, a2, b2', 'return ' + formula.value + ';');
+forFunc(1, 3, 1, 0);

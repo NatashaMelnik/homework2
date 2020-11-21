@@ -1,7 +1,3 @@
-// var obj = document.getElementById('tamFeed');
-// alert(obj.textContent);
-// obj.textContent = "123!!!";
-
 let tamFeed_text = document.querySelector('#tamFeed_text');
 let tamWalk_text = document.querySelector('#tamWalk_text');
 let tamSleep_text = document.querySelector('#tamSleep_text');
@@ -22,18 +18,17 @@ let tamChill = document.querySelector('#tamChill'); //30
 let tamStudy = document.querySelector('#tamStudy'); //25
 let tamDoctor = document.querySelector('#tamDoctor'); //50
 
+let currentFeed = Number(tamFeed.textContent);
+let currentWalk = Number(tamWalk.textContent);
+let currentSleep = Number(tamSleep.textContent);
+let currentDrink = Number(tamDrink.textContent);
+let currentRun = Number(tamRun.textContent);
+let currentWash = Number(tamWash.textContent);
+let currentChill = Number(tamChill.textContent);
+let currentStudy = Number(tamStudy.textContent);
+let currentDoct = Number(tamDoctor.textContent);
+
 function liveTam() {
-
-    let currentFeed = Number(tamFeed.textContent);
-    let currentWalk = Number(tamWalk.textContent);
-    let currentSleep = Number(tamSleep.textContent);
-    let currentDrink = Number(tamDrink.textContent);
-    let currentRun = Number(tamRun.textContent);
-    let currentWash = Number(tamWash.textContent);
-    let currentChill = Number(tamChill.textContent);
-    let currentStudy = Number(tamStudy.textContent);
-    let currentDoct = Number(tamDoctor.textContent);
-
 
     let timerId = setInterval(function () {
 
@@ -128,7 +123,10 @@ function liveTam() {
         }
 
 
-        if (currentFeed == 5 || currentWalk == 4 || currentSleep == 7 || currentDrink == 2 || currentRun == 6 || currentWash == 8 || currentChill == 9 || currentStudy == 5 || currentDoct == 8) { sadCat(); }
+        if (currentFeed == 5 || currentWalk == 4 || currentSleep == 7 || currentDrink == 2 || currentRun == 6 || currentWash == 8 || currentChill == 9 || currentStudy == 5 || currentDoct == 8) {
+            sadCat();
+        }
+
         if (currentFeed == 0 || currentWalk == 0 || currentSleep == 0 || currentDrink == 0 || currentRun == 0 || currentWash == 0 || currentChill == 0 || currentStudy == 0 || currentDoct == 0) {
             catDeath();
             clearInterval(timerId);
@@ -143,6 +141,7 @@ function liveTam() {
         currentChill--;
         currentStudy--;
         currentDoct--;
+
         tamFeed.textContent = currentFeed;
         tamWalk.textContent = currentWalk;
         tamSleep.textContent = currentSleep;
@@ -153,7 +152,7 @@ function liveTam() {
         tamStudy.textContent = currentStudy;
         tamDoctor.textContent = currentDoct;
 
-    }, 1000);
+    }, 2000);
 }
 
 liveTam();
@@ -163,6 +162,7 @@ function sadCat() {
 }
 
 function catDeath() {
+    document.querySelector('#cat_name').textContent = 'Mr. Kitty is dead';
     $("#cat_image").attr('src', 'images/cat_death.jpg');
 }
 

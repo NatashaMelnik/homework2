@@ -1,19 +1,19 @@
-function sum(a) {
-
-    let currentSum = a;
-
-    function f(b) {
-        currentSum += b;
-        return f;
-    }
-
-    f.toString = function () {
-        return currentSum;
+function sum(f) { 
+    return function (a) {
+        return function (b) {
+            return function(c){
+                return function(){
+                    return f(a, b, c);
+                };
+            };
+        };
     };
-
-    return f;
 }
 
-let res = sum(1)(2)(3);
+function func(a, b, c) {
+    return a + b + c;
+}
 
-console.log(res);
+let Sum = sum(func);
+
+console.log(Sum(1)(2)(3)()); 
