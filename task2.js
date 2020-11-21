@@ -28,106 +28,161 @@ let currentChill = Number(tamChill.textContent);
 let currentStudy = Number(tamStudy.textContent);
 let currentDoct = Number(tamDoctor.textContent);
 
+let structureFeed = {
+    imageSrc: 'images/cat_eat.jpg',
+    idNeedsText: '#tamFeed_text',
+    maxValue: 20
+};
+
+let structureWalk = {
+    imageSrc: 'images/cat_walk.jpg',
+    idNeedsText: '#tamWalk_text',
+    maxValue: 20
+};
+
+let structureSleep = {
+    imageSrc: 'images/cat_sleep.jpg',
+    idNeedsText: '#tamSleep_text',
+    maxValue: 40
+};
+
+let structureDrink = {
+    imageSrc: 'images/cat_drink.jpg',
+    idNeedsText: '#tamDrink_text',
+    maxValue: 10
+};
+
+let structureRun = {
+    imageSrc: 'images/cat_run.jpg',
+    idNeedsText: '#tamRun_text',
+    maxValue: 30
+};
+
+let structureWash = {
+    imageSrc: 'images/cat_wash.jpg',
+    idNeedsText: '#tamWash_text',
+    maxValue: 30
+};
+
+let structureChill = {
+    imageSrc: 'images/cat_beaty.jpg',
+    idNeedsText: '#tamChill_text',
+    maxValue: 30
+};
+
+let structureStudy = {
+    imageSrc: 'images/cat_study.jpg',
+    idNeedsText: '#tamStudy_text',
+    maxValue: 25
+};
+
+let structureDoct = {
+    imageSrc: 'images/cat_treatment.png',
+    idNeedsText: '#tamDoctor_text',
+    maxValue: 50
+};
+
+function setMaxValue(structure) {
+    if (structure == structureFeed) {
+        currentFeed = structureFeed.maxValue;
+    }
+    else if (structure == structureWalk) {
+        currentWalk = structure.maxValue;
+    }
+    else if (structure == structureSleep) {
+        currentSleep = structure.maxValue;
+    }
+    else if (structure == structureDrink) {
+        currentDrink = structure.maxValue;
+    }
+    else if (structure == structureRun) {
+        currentRun = structure.maxValue;
+    }
+    else if (structure == structureWash) {
+        currentWash = structure.maxValue;
+    }
+    else if (structure == structureChill) {
+        currentChill = structure.maxValue;
+    }
+    else if (structure == structureStudy) {
+        currentStudy = structure.maxValue;
+    }
+    else if (structure == structureDoct) {
+        currentDoct = structure.maxValue;
+    }
+}
+
+function onCatNeeds(structure) {
+    $("#cat_image").attr('src', structure.imageSrc);
+    $(structure.idNeedsText).css("color", "red");
+    $(structure.idNeedsText).click(function () {
+        setMaxValue(structure);
+        $(structure.idNeedsText).css("color", "black");
+        backCat();
+    })
+}
+
 function liveTam() {
 
     let timerId = setInterval(function () {
 
         if (currentFeed == 12) {
-            $("#cat_image").attr('src', 'images/cat_eat.jpg');
-            $('#tamFeed_text').css("color", "red");
-            $('#tamFeed_text').click(function () {
-                currentFeed = 20;
-                $('#tamFeed_text').css("color", "black");
-                backCat();
-            })
+            onCatNeeds(structureFeed);
         }
 
-        if (currentWalk == 7) {
-            $("#cat_image").attr('src', 'images/cat_walk.jpg');
-            $('#tamWalk_text').css("color", "red");
-            $('#tamWalk_text').click(function () {
-                currentWalk = 20;
-                $('#tamWalk_text').css("color", "black");
-                backCat();
-            })
+        if (currentWalk == 12) {
+            onCatNeeds(structureWalk);
         }
 
         if (currentSleep == 15) {
-            $("#cat_image").attr('src', 'images/cat_sleep.jpg');
-            $('#tamSleep_text').css("color", "red");
-            $('#tamSleep_text').click(function () {
-                currentSleep = 40;
-                $('#tamSleep_text').css("color", "black");
-                backCat();
-            })
+            onCatNeeds(structureSleep);
         }
 
         if (currentDrink == 5) {
-            $("#cat_image").attr('src', 'images/cat_drink.jpg');
-            $('#tamDrink_text').css("color", "red");
-            $('#tamDrink_text').click(function () {
-                currentDrink = 10;
-                $('#tamDrink_text').css("color", "black");
-                backCat();
-            })
+            onCatNeeds(structureDrink);
         }
 
         if (currentRun == 12) {
-            $("#cat_image").attr('src', 'images/cat_run.jpg');
-            $('#tamRun_text').css("color", "red");
-            $('#tamRun_text').click(function () {
-                currentRun = 30;
-                $('#tamRun_text').css("color", "black");
-                backCat();
-            })
+            onCatNeeds(structureRun);
         }
 
         if (currentWash == 13) {
-            $("#cat_image").attr('src', 'images/cat_wash.jpg');
-            $('#tamWash_text').css("color", "red");
-            $('#tamWash_text').click(function () {
-                currentWash = 30;
-                $('#tamWash_text').css("color", "black");
-                backCat();
-            })
+            onCatNeeds(structureWash);
         }
 
         if (currentChill == 11) {
-            $("#cat_image").attr('src', 'images/cat_beaty.jpg');
-            $('#tamChill_text').css("color", "red");
-            $('#tamChill_text').click(function () {
-                currentChill = 30;
-                $('#tamChill_text').css("color", "black");
-                backCat();
-            })
+            onCatNeeds(structureChill);
         }
 
         if (currentStudy == 8) {
-            $("#cat_image").attr('src', 'images/cat_study.jpg');
-            $('#tamStudy_text').css("color", "red");
-            $('#tamStudy_text').click(function () {
-                currentStudy = 25;
-                $('#tamStudy_text').css("color", "black");
-                backCat();
-            })
+            onCatNeeds(structureStudy);
         }
 
         if (currentDoct == 15) {
-            $("#cat_image").attr('src', 'images/cat_treatment.png');
-            $('#tamDoctor_text').css("color", "red");
-            $('#tamDoctor_text').click(function () {
-                currentDoct = 50;
-                $('#tamDoctor_text').css("color", "black");
-                backCat();
-            })
+            onCatNeeds(structureDoct);
         }
 
-
-        if (currentFeed == 5 || currentWalk == 4 || currentSleep == 7 || currentDrink == 2 || currentRun == 6 || currentWash == 8 || currentChill == 9 || currentStudy == 5 || currentDoct == 8) {
+        if (currentFeed == 5 ||
+            currentWalk == 4 ||
+            currentSleep == 7 ||
+            currentDrink == 2 ||
+            currentRun == 6 ||
+            currentWash == 8 ||
+            currentChill == 9 ||
+            currentStudy == 5 ||
+            currentDoct == 8) {
             sadCat();
         }
 
-        if (currentFeed == 0 || currentWalk == 0 || currentSleep == 0 || currentDrink == 0 || currentRun == 0 || currentWash == 0 || currentChill == 0 || currentStudy == 0 || currentDoct == 0) {
+        if (currentFeed == 0 ||
+            currentWalk == 0 ||
+            currentSleep == 0 ||
+            currentDrink == 0 ||
+            currentRun == 0 ||
+            currentWash == 0 ||
+            currentChill == 0 ||
+            currentStudy == 0 ||
+            currentDoct == 0) {
             catDeath();
             clearInterval(timerId);
         }
@@ -152,7 +207,7 @@ function liveTam() {
         tamStudy.textContent = currentStudy;
         tamDoctor.textContent = currentDoct;
 
-    }, 2000);
+    }, 1000);
 }
 
 liveTam();
