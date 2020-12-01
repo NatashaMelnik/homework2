@@ -14,28 +14,28 @@ function test(i_) {
     console.log(i_);
 }
 
-function myForEach(arr) {
+Array.prototype.myForEach = (arr) => {
     for (let i = 0; i < arr.length; i++) {
         test(i);
     }
 }
 
-console.log(arr);
+console.log([].myForEach(arr));
 
 // _______ task5.2 - myMap
 
-let myMapCallback = function(i){
-    return i*(-1);
+let myMapCallback = function (i) {
+    return i * (-1);
 }
 
-function myMap(arr, Callback) {
-    for(let i = 0; i < arr.length; i++){
+Array.prototype.myMap = (arr, Callback) => {
+    for (let i = 0; i < arr.length; i++) {
         arr[i] = Callback(arr[i]);
     }
     return arr;
 }
 
-console.log(myMap(arr, myMapCallback)); 
+console.log([].myMap(arr, myMapCallback));
 
 // _______ task5.3 - mySort
 
@@ -52,7 +52,7 @@ function stringConvert(item) {
     return item;
 }
 
-function mySort(arr) {
+Array.prototype.mySort = (arr) => {
     let items = stringConvert(arr);
     let len = items.length,
         i, j, stop;
@@ -66,7 +66,7 @@ function mySort(arr) {
     return items;
 }
 
-console.log(mySort(arr));
+console.log([].mySort(arr));
 
 // _______ task5.4 - myFilter
 
@@ -79,33 +79,32 @@ let condition = function (i) {
     }
 }
 
-function myFilter(arr, condition) {
+Array.prototype.myFilter = (arr, condition) => {
     let res = [];
-    
+
     for (let i = 0, j = 0; i < arr.length; i++) {
-        if(condition(arr[i])){
+        if (condition(arr[i])) {
             res[j] = arr[i];
             j++;
         }
-        else{
+        else {
             continue;
         }
     }
     return res;
 }
 
-let qwe = myFilter([1, 2, 3, 4, 5, 6, 7], condition);
-console.log(qwe);
+console.log([].myFilter([1, 2, 3, 4, 5, 6, 7], condition));
 
 // _______ task5.5 - myFind
 
-function myFind(item, index, array){
-    if(array[index] === item){
+Array.prototype.myFind = (item, index, array) => {
+    if (array[index] === item) {
         return true
     }
-    else{
+    else {
         return false;
     }
 }
 
-console.log(myFind(5, 0, arr));
+console.log([].myFind(5, 0, arr));

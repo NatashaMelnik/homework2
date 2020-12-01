@@ -1,20 +1,20 @@
-// 4) Реализовать функцию calculate
-// calculate(3).add(2).multiply(2).result() // 10
-
-function calculate(x1) {
+function calculate(a) {
     return {
-        add: function (x2) {
-            return {
-                multiply: function (x3) {
-                    return {
-                        result: function () {
-                            return (x1 + x2) * x3;
-                        }
-                    }
-                }
-            }
+        a,
+        add(b) {
+            this.a += b;
+            return this;
+        },
+        multiply(c) {
+            this.a *= c;
+            return this;
+        },
+        result() {
+            return this.a;
         }
     }
 }
 
 calculate(3).add(2).multiply(2).result();
+
+console.log(calculate(3).add(2).multiply(2).result());

@@ -1,17 +1,18 @@
-function callback(){
-	console.log('123');
-}
 
-function forFunc(i, limit, step, iteration) {
+function forFunc(i, limit, step, iteration, callback) {
 
 	if (limit/step - iteration >= i) {
-		callback();
+		callback(i);
 	}
 	else {
-		callback();
+		callback(i);
 		iteration = iteration - step;
 		return forFunc(i, limit, step, iteration);
 	}
 }
 
-forFunc(1, 3, 1, 0);
+let func = function(i_){
+	console.log(i_);
+}
+
+forFunc(1, 3, 1, 0, func);

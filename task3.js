@@ -1,19 +1,14 @@
-function sum(f) { 
-    return function (a) {
-        return function (b) {
-            return function(c){
-                return function(){
-                    return f(a, b, c);
-                };
-            };
-        };
-    };
+function sum(x) {
+    return function recurs(y) {
+        if (y) {
+            x = y + x;
+            return recurs;
+        }
+        else {
+            return x;
+        }
+    }
 }
 
-function func(a, b, c) {
-    return a + b + c;
-}
-
-let Sum = sum(func);
-
-console.log(Sum(1)(2)(3)()); 
+console.log(sum(1)(2)(3)());
+console.log(sum(1)(2)(3)(4)(5)(6)(7)());
